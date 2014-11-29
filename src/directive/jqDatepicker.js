@@ -1,5 +1,4 @@
 (function (jQuery) {
-
     'use strict';
     
     angular
@@ -47,13 +46,13 @@
                 }
                 
                 element.datepicker(settings);
-                
-                function onSelect(date) {
-                
-                    scope.$apply(function () {
-                        ngModelCtrl.$setViewValue(date);
-                    });
-                }
+            }                
+            
+            function onSelect(date) {
+            
+                scope.$apply(function () {
+                    ngModelCtrl.$setViewValue(date);
+                });
             }
         }
     }
