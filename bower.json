@@ -1,0 +1,20 @@
+{
+  "name": "ocean-internet-angular",
+  "homepage": "https://github.com/OceanInternet/angular",
+  "authors": [
+    "Andy Weir <andy@ocean-internet.co.uk>"
+  ],
+  "description": "My AngularJS Library",
+  "main": "src/ocean-internet.js",
+  "keywords": [
+    "angularjs"
+  ],
+  "license": "GPL2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
