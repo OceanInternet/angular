@@ -14,7 +14,7 @@
             restrict: 'A',
             require:  'ngModel',
             link:     link
-        }
+        };
       
         function link(scope, element, attrs, ngModelCtrl) {
         
