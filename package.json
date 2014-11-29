@@ -1,0 +1,40 @@
+{
+  "name": "ocean-internet-angular",
+  "description": "My AngularJS Library",
+  "main": "src/ocean-internet.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start --browsers Firefox --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/OceanInternet/angular.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs"
+  ],
+  "author": "Andy Weir",
+  "license": "GPL2",
+  "bugs": {
+    "url": "https://github.com/OceanInternet/angular/issues"
+  },
+  "homepage": "https://github.com/OceanInternet/angular",
+  "devDependencies": {
+    "karma": "^0.12.9",
+    "karma-chrome-launcher": "^0.1.3",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.1.5",
+    "pre-commit": "0.0.9"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.1.5"
+  },
+  "pre-commit": [
+    "test"
+  ]
+}
