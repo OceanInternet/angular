@@ -1,4 +1,4 @@
-(function (Modernizr) {
+(function () {
 
     'use strict';
     
@@ -15,4 +15,4 @@
         };
     }
 
-})(Modernizr);
+})();
