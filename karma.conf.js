@@ -5,27 +5,36 @@ module.exports = function (config) {
     basePath: '',
     files: [
       'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular-*/angular-*.js',
       'bower_components/modernizr/modernizr.js',
       'src/*.js',
       'src/**/*.js',
       'tests/*.js',
       'tests/**/*.spec.js'
     ],
-
-    reporters: ['progress'],
-
-    port: 9876,
-    colors: true,
-
-    logLevel: config.LOG_INFO,
-
-    browsers: ['Chrome'],
+    
+    exclude: [
+      'bower_components/angular/*.min.js',
+      'bower_components/angular-*/angular-*.min.js'
+    ],
+    
+    autoWatch: true,
+    
     frameworks: ['jasmine'],
 
-    captureTimeout: 60000,
+    browsers : ['PhantomJS'],
 
-    autoWatch: true,
-    singleRun: false
+    plugins : [
+            'karma-chrome-launcher',
+            'karma-firefox-launcher',
+            'karma-phantomjs-launcher',
+            'karma-jasmine',
+            'karma-junit-reporter'
+            ],
+
+    junitReporter : {
+      outputFile: 'log/unit.xml',
+      suite: 'unit'
+    }
   });
 };
