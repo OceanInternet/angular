@@ -4,10 +4,11 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     files: [
+      'bower_components/jquery/dist/jquery.js',
+      'bower_components/jquery-ui/jquery-ui.js',
+      'bower_components/modernizr/modernizr.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-*/angular-*.js',
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/modernizr/modernizr.js',
       'src/*.js',
       'src/**/*.js',
       'tests/*.js',

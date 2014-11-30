@@ -1,13 +1,13 @@
-(function (jQuery) {
+(function () {
     'use strict';
     
     angular
         .module('ocean-internet')
         .directive('jqDatepicker', jqDatepicker);
     
-    jqDatepicker.$inject = ['modernizr'];
+    jqDatepicker.$inject = ['$filter', 'modernizr'];
     
-    function jqDatepicker(modernizr) {
+    function jqDatepicker($filter, modernizr) {
       
         return {
             restrict: 'A',
@@ -16,16 +16,18 @@
         };
       
         function link(scope, element, attrs, ngModelCtrl) {
-        
+
+            var settings = {
+                    dateFormat:  'dd/mm/yy', // My chosen display format
+                    changeMonth: true,       // I wanted a month selector
+                    onSelect:    onSelect    // I'll use this to update the model
+                };
+                
+
+
             // Check for native input[date] availability
             if (!modernizr.hasOwnProperty('inputtypes') || !modernizr.inputtypes.date) {
             
-                var settings = {
-                        dateFormat:  'dd/mm/yy', // My chosen display format
-                        changeMonth: true,       // I wanted a month selector
-                        onSelect:    onSelect    // I'll use this to update the model
-                    };
-                
                 if(attrs.min) {
                     settings.minDate = new Date(attrs.min);
                 }
@@ -38,23 +40,31 @@
                 if(settings.hasOwnProperty('minDate') && settings.hasOwnProperty('maxDate')) {
                 
                     var minYear = settings.minDate.getFullYear(),
-                    maxYear = settings.maxYear.getFullYear(),
-                    range   = minYear + ':' + maxYear;
+                        maxYear = settings.maxDate.getFullYear();
+                                                
+                    if(minYear !== maxYear) {
                     
-                    settings.changeYear = true;
-                    settings.yearRange  = range;
+                        var range = minYear + ':' + maxYear;
+                        
+                        settings.changeYear = true;
+                        settings.yearRange  = range;
+                    }
                 }
                 
                 element.datepicker(settings);
             }                
             
             function onSelect(date) {
-            
+
                 scope.$apply(function () {
-                    ngModelCtrl.$setViewValue(date);
+                
+                    var parsedDate = jQuery.datepicker.parseDate(settings.dateFormat, date),
+                        mysqlDate  = $filter('date')(parsedDate, 'yyyy-MM-dd');
+
+                    ngModelCtrl.$setViewValue(mysqlDate);
                 });
             }
         }
     }
 
-})(jQuery);
+})();

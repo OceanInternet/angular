@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../../bower_components/jquery-ui/themes/smoothness/jquery-ui.css" />
+        <script src="../../bower_components/modernizr/modernizr.js"></script>
+    </head>
+    <body data-ng-app="ocean-internet">
+        <h1>directive/jqDatepicker</h1>
+        <div data-ng-controller="test">
+            $scope.date: <pre>{{ date | json }}</pre>
+            <input type="date" placeholder="dd/mm/yyyy" min="2000-01-01" max="2020-12-31" data-ng-model="date" data-jq-datepicker />
+        </div>
+        <script src="../../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../../bower_components/jquery-ui/jquery-ui.js"></script>
+        <script src="../../bower_components/angular/angular.js"></script>
+        <script src="../../src/ocean-internet.js"></script>
+        <script src="../../src/directive/jqDatepicker.js"></script>
+        <script src="../../src/provider/modernizr.js"></script>
+        <script>
+            (function () {
+            
+                'use strict';
+                
+                angular
+                    .module('ocean-internet')
+                    .controller('test', test);
+                    
+                test.$inject = ['$scope'];
+                
+                function test($scope) {
+                
+                    $scope.date = null;
+                }                    
+            })();
+        </script>
+    </body>
+</html>
